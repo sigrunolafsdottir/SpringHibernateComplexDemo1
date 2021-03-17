@@ -18,6 +18,10 @@ public class Present implements Serializable {
 
     public Present(){}
 
+    public Present(String name) {
+        this.name = name;
+    }
+
     public Present(Long id, String name) {
         this.id = id;
         this.name = name;

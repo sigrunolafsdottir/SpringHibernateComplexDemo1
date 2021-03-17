@@ -13,6 +13,12 @@ public class Capital implements Serializable {
     @Column(name = "name", unique = true, nullable = false)
     private String name;
 
+    public Capital(){}
+
+    public Capital(String name ){
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

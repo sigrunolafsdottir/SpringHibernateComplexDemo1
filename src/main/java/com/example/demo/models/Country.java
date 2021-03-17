@@ -18,13 +18,24 @@ public class Country implements Serializable {
 
     private String name;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)                           //cascade all så att vi autosparar en capital när vi sparar ett Country till db, se exempel i CommandLineRunnern i DemoApplication-klassen
     @JoinColumn(name = "capitalId", referencedColumnName = "id")
     private Capital capital;                                             //bara för att ha en 1-1-relation att dema
 
     @OneToMany(mappedBy= "country")
     @JsonManagedReference
     private List<Child> children;
+
+    public Country(){}
+
+    public Country(String name){
+        this.name = name;
+    }
+
+    public Country(String name, Capital cap){
+        this.name = name;
+        capital = cap;
+    }
 
     public Long getId() {
         return id;

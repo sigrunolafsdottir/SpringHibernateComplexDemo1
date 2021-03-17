@@ -17,17 +17,26 @@ public class Child implements Serializable {
 
     private String name;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="countryId", referencedColumnName="id")
     @JsonBackReference
     private Country country;
 
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(name="wishes", joinColumns={@JoinColumn(referencedColumnName="id")}
             , inverseJoinColumns={@JoinColumn(referencedColumnName="id")})
     private List<Present> wishes;
 
     //private List<Present> gifts;
+
+
+    public Child(){}
+
+    public Child(String name, Country country, List<Present> wishes){
+        this.name = name;
+        this.country = country;
+        this.wishes = wishes;
+    }
 
     public Long getId() {
         return id;
