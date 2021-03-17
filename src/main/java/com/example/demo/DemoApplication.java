@@ -8,6 +8,8 @@ import com.example.demo.repositories.CapitalRepository;
 import com.example.demo.repositories.ChildRepository;
 import com.example.demo.repositories.CountryRepository;
 import com.example.demo.repositories.PresentRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,6 +19,8 @@ import java.util.Arrays;
 
 @SpringBootApplication
 public class DemoApplication {
+
+
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
