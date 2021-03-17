@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.models.Capital;
+import com.example.demo.models.Country;
 import com.example.demo.repositories.CapitalRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,6 +37,11 @@ public class CapitalController {
 
             return capitalRepository.findAll();
         }
+
+    @GetMapping(path="/getById")
+    public Capital getCapById(@RequestParam Long id) {
+        return capitalRepository.findById(id).get();
+    }
 
 
 

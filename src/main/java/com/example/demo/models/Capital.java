@@ -19,6 +19,11 @@ public class Capital implements Serializable {
         this.name = name;
     }
 
+    public Capital(String name, Long id ){
+        this.name = name;
+        this.id=id;
+    }
+
     public Long getId() {
         return id;
     }
