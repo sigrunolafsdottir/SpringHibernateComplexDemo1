@@ -1,17 +1,20 @@
 package com.example.demo.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
 @Entity
-public class Present {
+public class Present implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
     private String name;
+
+    //om man vill ha en bidirectional manyToMany
+  //  @ManyToMany(mappedBy="wishes")
+ //   private List<Child> children;
 
     public Present(){}
 
@@ -35,6 +38,14 @@ public class Present {
     public String getName() {
         return name;
     }
+/*
+    public List<Child> getChildren() {
+        return children;
+    }
 
+    public void setChildren(List<Child> children) {
+        this.children = children;
+    }
+    */
 
 }

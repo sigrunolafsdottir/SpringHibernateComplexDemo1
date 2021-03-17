@@ -1,14 +1,16 @@
 package com.example.demo.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Capital {
+public class Capital implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-
     private Long id;
+
+    @Column(name = "name", unique = true, nullable = false)
     private String name;
 
     public Long getId() {

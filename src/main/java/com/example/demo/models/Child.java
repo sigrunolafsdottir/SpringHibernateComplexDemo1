@@ -1,14 +1,15 @@
 package com.example.demo.models;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
-
-public class Child {
+@Entity
+public class Child implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -16,9 +17,17 @@ public class Child {
 
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name="countryId", referencedColumnName="id")
+    @JsonBackReference
     private Country country;
+
+    @ManyToMany
+    @JoinTable(name="wishes", joinColumns={@JoinColumn(referencedColumnName="id")}
+            , inverseJoinColumns={@JoinColumn(referencedColumnName="id")})
     private List<Present> wishes;
-    private List<Present> gifts;
+
+    //private List<Present> gifts;
 
     public Long getId() {
         return id;
@@ -43,15 +52,15 @@ public class Child {
     public void setWishes(List<Present> wishes) {
         this.wishes = wishes;
     }
+    /*
+        public List<Present> getGifts() {
+            return gifts;
+        }
 
-    public List<Present> getGifts() {
-        return gifts;
-    }
-
-    public void setGifts(List<Present> gifts) {
-        this.gifts = gifts;
-    }
-
+        public void setGifts(List<Present> gifts) {
+            this.gifts = gifts;
+        }
+    */
     public Country getCountry() {
         return country;
     }
